@@ -360,12 +360,17 @@ void cn_plot(char  *OUT, int KEEP, char *ATABLE, char *RTABLE,
   if (KEEP)
     { FILE *f;
 
-      f = fopen(Catenate(OUT,".cni","",""),"w");
+      f = fopen(Catenate(OUT,".raw.cni","",""),"w");
       for (i = 0; i < 7; i++)
         Dump_Histogram(f,H[i]);
       fclose(f);
     }
 
-  sprintf(command,"rm -f %s.cnz %s.R",troot,troot);
+  // Save R ready (troot) cni files with meaningful names
+  sprintf(cmd, "cp %s.cni %s.cni", troot, OUT);
+  SystemX(cmd);
+
+  // Remove temp files
+  sprintf(command,"rm -f %s.cni %s.cnz %s.R",troot,troot,troot);
   SystemX(command);
 }
