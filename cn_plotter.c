@@ -367,8 +367,8 @@ void cn_plot(char  *OUT, int KEEP, char *ATABLE, char *RTABLE,
     }
 
   // Save R ready (troot) cni files with meaningful names
-  sprintf(cmd, "cp %s.cni %s.cni", troot, OUT);
-  SystemX(cmd);
+  sprintf(command, "cp %s.cni %s.cni", troot, OUT);
+  SystemX(command);
 
   // Remove temp files
   sprintf(command,"rm -f %s.cni %s.cnz %s.R",troot,troot,troot);
